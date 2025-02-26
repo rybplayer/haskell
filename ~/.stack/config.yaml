@@ -1,0 +1,13 @@
+system-ghc: true
+install-ghc: true
+
+# Add this section for connection settings
+connection:
+  timeout: 300
+
+templates:
+  params:
+    #    author-name:
+    #    author-email:
+    #    copyright:
+    #    github-username: 

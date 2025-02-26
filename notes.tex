@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{ryblatex}
+\usepackage{cmbright}
+\usepackage[OT1]{fontenc}
+
+\title{Notes from "Haskell Programming from First Principles"}
+\author{Ryan Batubara}
+\date{\today}
+
+\makeindex
+
+\begin{document}
+\maketitle
+\section{All You Need is Lambda}
+
+\subsection{Lambda Terms}
+
+\term{Expressions} include concrete values, variables, and functions. \term{Variables} have no meaning or value; they are just names for inputs. \term{Functions} are relations between a set of possible inputs with \term{purity} or \term{referential transparency}, meaning the same inputs always give the same output. 
+
+An \term{abstraction} is just a function. It has two parts: the \term{head} is a $\lambda$ followed by a variable name; the \term{body} is another expression. The variable in the head is the \term{parameter} and \term{binds} all instances of that variable in the body of the function. This makes the paramater reserved for the body, but nowhere else.
+
+\subsection{Computing Lambda Terms}
+
+Syaing that a function is equivalent up to renaming is called \term{alpha equivalence}. The process of binding variables and removing heads is called \term{beta reduction}. The syntax \term{[x := z]} indicates $z$ will be substituted for $x$ in the body. \term{Beta normal form} is when you cannot beta reduce terms any further.
+
+\term{Free variables} are variables in the body not named in the head. A combinator is a lambda term with no free variables; they combine the arguments given. \term{Currying} is the idea of nesting lambdas for multiple arguments: 
+\begin{align*}
+    \lambda xy.xy = \lambda x.(\lambda y.xy)
+\end{align*}
+
+Reducing terms ordinarily \term{converges} to beta normal form. That is, it terminates. \term{Divergence} means the reduction never ends. For example:
+\begin{align*}
+    (\lambda x.xx)(\lambda x.xx)
+\end{align*}
+This is important because divergent programs don't produce an \term{answer}, i.e. a meaningful result.
+
+\section{Hello, Haskell!}
+
+\subsection{Getting Started}
+
+\term{GHCi} provides a REPL environment for Haskell. Functions in Haskell consist of a name, parameters separated by whitespace, an equals sign, and then an expression. In general. modules and types are capitalized camel-case; functions lowercase camel-back; variable lowercase.
+
+\printindex
+
+\end{document}
